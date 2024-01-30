@@ -37,6 +37,14 @@ const movies = [
    },
 ];
 
+exports.getMovieById = (movieId) => {
+   const movie = movies.find((movie) => movie._id == movieId);
+
+   //TODO: do sth when there are NO movies
+   
+   return movie;
+};
+
 exports.getAll = () => {
    return movies.slice();
 };
