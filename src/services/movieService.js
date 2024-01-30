@@ -1,5 +1,6 @@
 const movies = [
    {
+      _id: 1,
       title: 'The Conjuring',
       genre: 'Horror',
       director: 'James Wan',
@@ -11,6 +12,7 @@ const movies = [
          'Before there was Amityville, there was Harrisville. The Conjuring tells the horrifying true story of Ed and Lorraine Warren, world renowned paranormal investigators, who were called to help a family terrorized by a dark presence in a secluded farmhouse. Forced to confront a powerful demonic entity, the Warrens find themselves caught in the most terrifying case of their lives. Oscar® nominee Vera Farmiga (The Departed) and Golden Globe nominee Patrick Wilson (Insidious) play the investigators while Golden Globe nominee Ron Livingston (Band of Brothers) and Emmy® nominee Lili Taylor (Six Feet Under) play the Perron family plagued by sinister spirits in this dark chiller from the writers of The Reaping and the creator of the Saw films.',
    },
    {
+      _id: 2,
       title: 'Road House',
       genre: 'Action',
       director: 'Doug Liman',
@@ -22,6 +24,7 @@ const movies = [
          'An ex-UFC middleweight fighter ends up working at a rowdy bar in the Florida Keys where things are not as they seem. A remake of the Patrick Swayze 1989 version that took place in Jasper, Missouri and starred Sam Elliot and Ben Gazara',
    },
    {
+      _id: 3,
       title: 'The 100 Candles Game: The Last Possession',
       genre: 'Horror',
       director: 'Carlos Goitia',
@@ -39,6 +42,7 @@ exports.getAll = () => {
 };
 
 exports.create = (movieData) => {
-   console.log(movieData);
+   movieData._id = movies[movies.length - 1]._id + 1;
+
    movies.push(movieData);
 };
