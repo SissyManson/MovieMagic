@@ -14,7 +14,11 @@
                         <p class='card-year'>Year: {{year}}</p>
                         <p class='card-ranking'>
                            Rating:
-                           <span id='stars'>&#x2605; &#x2605; &#x2605; &#x2605;</span>
+                           <span id='stars'>
+                              {{#each rating}}
+                                 &#x2605;
+                              {{/each}}
+                           </span>
                         </p>
                      </div>
                   </div>
