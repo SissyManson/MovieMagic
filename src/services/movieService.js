@@ -41,8 +41,28 @@ exports.getMovieById = (movieId) => {
    const movie = movies.find((movie) => movie._id == movieId);
 
    //TODO: do sth when there are NO movies
-   
+
    return movie;
+};
+
+exports.search = (title, genre, year) => {
+   let result = movies.slice();
+
+   if (title) {
+      result = result.filter((movie) =>
+         movie.title.toLowerCase().includes(title.toLowerCase())
+      );
+   }
+   if (genre) {
+      result = result.filter((movie) =>
+         movie.genre.toLowerCase().includes(genre.toLowerCase())
+      );
+   }
+   if (year) {
+      result = result.filter((movie) => movie.year === year);
+   }
+
+   return result;
 };
 
 exports.getAll = () => {
