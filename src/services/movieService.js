@@ -2,24 +2,24 @@ const Movie = require('../Models/Movie');
 const Cast = require('../Models/Cast');
 
 // TODO: filter result in MongoDB
-exports.search = async (title, genre, year) => {
-   let result = await Movie.find().lean();
+exports.search = (title, genre, year) => {
+   let query = {};
+   // let query2 = Movie.find(); // another way to Search
 
    if (title) {
-      result = result.filter((movie) =>
-         movie.title.toLowerCase().includes(title.toLowerCase())
-      );
+      query.title = new RegExp(title, 'i');
+      // query2 = query2.find({ title: new RegExp(title, 'i') });
    }
    if (genre) {
-      result = result.filter((movie) =>
-         movie.genre.toLowerCase().includes(genre.toLowerCase())
-      );
+      query.genre = genre.toLowerCase();
    }
    if (year) {
-      result = result.filter((movie) => movie.year === year);
+      query.year = year;
+      // query2 = query2.find({ year });
    }
 
-   return result;
+   return Movie.find(query);
+   // return query2;
 };
 
 exports.getAll = () => Movie.find();
@@ -39,7 +39,7 @@ exports.attach = async (movieId, castId) => {
 
    movie.casts.push(cast);
    cast.movies.push(movie);
-   
+
    await movie.save();
    await cast.save();
 
