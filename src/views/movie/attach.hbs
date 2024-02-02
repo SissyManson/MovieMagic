@@ -5,7 +5,7 @@
          <div class='attach-form'>
             <h2>{{title}}</h2>
             <img class='movie' src='{{imageUrl}}' />
-            <form action='' method=''>
+            <form action='/movies/{{_id}}/attach' method='POST'>
                <label for='cast'>Cast</label>
                <select id='cast' name='cast'>
                   <option value='none' selected>--------</option>
@@ -15,6 +15,8 @@
                </select>
                <div id='center-btn'>
                   <button id='create-btn'>Add Cast</button>
+                  <a href='/movies/{{_id}}' id='create-btn'>Details</a>
+
                </div>
             </form>
          </div>
