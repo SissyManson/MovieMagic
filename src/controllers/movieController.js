@@ -14,13 +14,13 @@ router.post('/create', async (req, res) => {
       res.redirect('/');
    } catch (err) {
       console.error(err.message);
-      res.redirect('/create')
+      res.redirect('/create');
    }
 });
 
-router.get('/movies/:movieId', (req, res) => {
+router.get('/movies/:movieId', async (req, res) => {
    const movieId = req.params.movieId;
-   const movie = movieService.getMovieById(movieId);
+   const movie = await movieService.getMovieById(movieId).lean();
 
    movie.rating = new Array(Number(movie.rating)).fill(true);
 
