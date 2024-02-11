@@ -4,6 +4,8 @@ const movieSchema = new mongoose.Schema({
    title: {
       type: String,
       required: true,
+      minLength: 5,
+      match: /^[a-zA-Z0-9 ]+$/
    },
    genre: {
       type: String,

@@ -9,15 +9,13 @@ router.get('/register', (req, res) => {
 router.post('/register', async (req, res) => {
    const userData = req.body;
 
-   await authService.register(userData);
-
-   res.redirect('/auth/login');
-   // try {
-   //    await authService.register(userData);
-   //    res.redirect('/auth/login');
-   // } catch (err) {
-   //    res.send(500, 'All fields are required!')
-   // }
+   try {
+      await authService.register(userData);
+      
+      res.redirect('/auth/login');
+   } catch (err) {
+      res.render('auth/register', { error: err.message });
+   }
 });
 
 router.get('/login', (req, res) => {
@@ -34,7 +32,7 @@ router.post('/login', async (req, res) => {
 
 router.get('/logout', (req, res) => {
    res.clearCookie('auth');
-   
+
    res.redirect('/');
 });
 module.exports = router;
