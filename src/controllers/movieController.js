@@ -7,9 +7,8 @@ const { isAuth } = require('../middlewares/authMiddleware');
 router.get('/movies/:movieId', async (req, res) => {
    const movieId = req.params.movieId;
    const movie = await movieService.getMovieById(movieId).lean();
-   const isOwner = movie.owner == req.user?._id;
+   const isOwner = movie.owner && movie.owner == req.user?._id;
    const isAuthenticated = !!req.user;
-   console.log(!!req.user);
 
    // TODO: This is not perfect, use handlebars helpers
    movie.rating = new Array(Number(movie.rating)).fill(true);
@@ -56,6 +55,19 @@ router.get('/movies/:movieId/edit', isAuth, async (req, res) => {
    const movie = await movieService.getMovieById(req.params.movieId).lean();
 
    res.render('movie/edit', { movie });
+});
+
+router.post('/movies/:movieId/edit', isAuth, async (req, res) => {
+   const editedMovie = req.body;
+
+   await movieService.edit(req.params.movieId, editedMovie);
+   
+   res.redirect(`/movies/${req.params.movieId}`);
+});
+
+router.get('/movies/:movieId/delete', isAuth, async (req, res) => {
+   await movieService.delete(req.params.movieId);
+   res.redirect('/');
 });
 
 module.exports = router;
