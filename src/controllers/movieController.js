@@ -4,6 +4,19 @@ const movieService = require('../services/movieService');
 const castService = require('../services/castService');
 const { isAuth } = require('../middlewares/authMiddleware');
 
+router.get('/movies/:movieId', async (req, res) => {
+   const movieId = req.params.movieId;
+   const movie = await movieService.getMovieById(movieId).lean();
+   const isOwner = movie.owner == req.user?._id;
+   const isAuthenticated = !!req.user;
+   console.log(!!req.user);
+
+   // TODO: This is not perfect, use handlebars helpers
+   movie.rating = new Array(Number(movie.rating)).fill(true);
+
+   res.render('movie/details', { movie, isOwner, isAuthenticated });
+});
+
 router.get('/create', isAuth, (req, res) => {
    res.render('create');
 });
@@ -22,15 +35,6 @@ router.post('/create', isAuth, async (req, res) => {
       console.error(err.message);
       res.redirect('/create');
    }
-});
-
-router.get('/movies/:movieId', async (req, res) => {
-   const movieId = req.params.movieId;
-   const movie = await movieService.getMovieById(movieId).lean();
-
-   movie.rating = new Array(Number(movie.rating)).fill(true);
-
-   res.render('movie/details', { movie });
 });
 
 router.get('/movies/:movieId/attach', async (req, res) => {
