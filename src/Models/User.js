@@ -17,7 +17,7 @@ const userSchema = new Schema({
          /^\w+$/,
          'Password must be at least 6 characters long and alphanumeric!',
       ],
-      minLength: 6,
+      minLength: [6, 'Password is too short!'],
    },
 });
 
