@@ -80,6 +80,7 @@ When you hover on the movie image the Details button is shown and it leads you t
 
 #### About
 Static about page
+
 <img alt="about" src="https://github.com/SissyManson/MovieMagic/assets/44162252/fad05146-d332-4ac6-8c8c-4d5788678fa1" width="80%">
 
 
@@ -119,4 +120,6 @@ A logged in user can edit the movies he has created
 A logged in user can attach cast to the existing movies
 <img alt="add-cast" src="https://github.com/SissyManson/MovieMagic/assets/44162252/78dda7c3-6ea5-408d-b0d1-3e170214d9aa" width="80%">
 
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
