@@ -21,7 +21,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Pages</a></li>
+    <li><a href="#pages">Pages</a></li>
   </ol>
 </details>
 
