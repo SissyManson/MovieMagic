@@ -79,9 +79,8 @@ When you hover on the movie image the Details button is shown and it leads you t
 
 
 #### About
-Static about page
 
-<img alt="about" src="https://github.com/SissyManson/MovieMagic/assets/44162252/fad05146-d332-4ac6-8c8c-4d5788678fa1" width="80%">
+<img alt="about" src="https://github.com/SissyManson/MovieMagic/assets/44162252/b59330ec-6d08-4a62-bcc4-226dd38a6097" width="80%">
 
 
 #### Search
@@ -102,6 +101,7 @@ Users can login or register if they do not have an account
 <img alt="register" src="https://github.com/SissyManson/MovieMagic/assets/44162252/95719f91-b3d1-43e5-980b-db126f113c51" width="80%">
 
 <hr>
+
 ### Pages visible for Logged users
 
 #### Create New Movie
